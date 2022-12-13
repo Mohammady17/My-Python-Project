@@ -1,20 +1,23 @@
 import tkinter as tk
+from tkinter import font
+import tkinter
+from tkinter.filedialog import askdirectory
 
 window = tk.Tk()
 window.title("Youtube Downloader")
 window.minsize(505, 200)
 
 def Body():
-    link_lable = tk.Label(window, text="Video Link")
-    link_lable.grid(row=0, padx=20, pady=20)
-    link_lable.config(font=("None", 15), fg="blue")
+    link_case = tk.Label(window, text="Video Link")
+    link_case.grid(row=0, padx=20, pady=20)
+    link_case.config(font=("None", 15), fg="blue")
 
-    link_input = tk.Entry(window, width=40)
+    link_input = tk.Entry(window, width=40, textvariable=download_add)
     link_input.grid(row=0, column=1)
 
-    locate_lable = tk.Label(window, text="Location")
-    locate_lable.grid(row=1, padx=20, pady=20)
-    locate_lable.config(font=("None", 15), fg="blue")
+    locate_case = tk.Label(window, text="Location")
+    locate_case.grid(row=1, padx=20, pady=20)
+    locate_case.config(font=("None", 15), fg="blue")
 
     locate_input = tk.Entry(window, width=30)
     locate_input.grid(row=1, column=1, sticky="W")
@@ -28,10 +31,10 @@ def Body():
 
 
 def Browse():
-    print("hiiiiii")
-    
+    address = askdirectory(initialdir="Your Address", title="Browse For Foolder")
+    download_add = set(address)
+download_add = tk.StringVar()
+
 Body()
-
-
 
 window.mainloop()
